@@ -39,6 +39,9 @@ def to_excel(df):
     processed_data = output.getvalue()
     return processed_data
 
+def mensaje_descarga():
+	if muteado == False:
+		mensaje_final("Atención!. Archivo descargado. Hora de agarrar la pala")
 
 ##########################################
 ##########################################
@@ -96,9 +99,12 @@ if data:
 	if muteado == False:
 		mensaje_final("Proceso terminado, disculpe la demora. Descargue el archivo por favor.")
 
+	
+
+
 	df_xlsx = to_excel(data)
 	st.download_button(label='📥 click acá para descargar el archivo!',
                        data=df_xlsx ,
-                       file_name= 'Visitas_transformado.xlsx')
-	if muteado == False:
-		mensaje_final("Atención!. Archivo descargado. Hora de agarrar la pala")
+                       file_name= 'Visitas_transformado.xlsx',
+                       on_click = mensaje_descarga)
+	
